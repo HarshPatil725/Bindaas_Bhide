@@ -1,0 +1,99 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=DM+Serif+Text:ital@0;1&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Itim&family=Jomolhari&family=Karla:ital,wght@0,200..800;1,200..800&family=Londrina+Sketch&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Merriweather", serif;
+}
+
+body {
+    background-color: #FCE8E6 !important;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 55px;
+}
+
+.custom-nav {
+    background-color: #FCE8E6;
+    border: none;
+    box-shadow: none;
+}
+
+.nav-bt {
+    padding: 3px 20px;
+    border-radius: 50px;
+    border: 0px;
+    background: #D9D9D9;
+}
+
+.line {
+    height: 2px;
+    border: 3px;
+}
+
+.nav-line {
+    height: 2px;
+    background-color: black;
+    /* match your theme */
+    width: 100%;
+}
+
+.hero {
+    display: flex;
+    height: calc(100vh - 81px);
+    margin-top: 7vh;
+}
+
+.arrows {
+    display: flex;
+    flex-direction: column;
+    width: 6vw;
+    justify-content: center;
+    align-items: center;
+    row-gap: 12vw;
+}
+
+.arrow {
+    width: 5vh;
+}
+
+.content {
+    height: 70vh;
+    width: 84vw;
+    padding-top: 20vh;
+}
+
+.hero-text {
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* center horizontally */
+    text-align: center;
+    margin-top: 10vh;
+    margin: auto;        /* center inside .content */
+}
+
+
+#hero-title {
+    font-size: 36px;
+    font-family: "Kaushan Script", cursive;
+    font-weight: bold;
+    font-style:normal;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+#hero-desc {
+    font-size: 32px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
