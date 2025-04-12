@@ -5,15 +5,493 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Roohvaza</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=DM+Serif+Text:ital@0;1&family=Kaushan+Script&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+        :root {
+            --primary-color: #FCE8E6;
+            --accent-color: #EAC3C3;
+            --text-color: #333;
+            --btn-gradient: linear-gradient(to right, #ff4d4d, #ff9999);
+            --btn-hover: linear-gradient(to right, #e60000, #ff6666);
+            --transition-speed: 0.3s;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--primary-color) !important;
+            font-family: "Merriweather", serif;
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        /* Navbar Styling */
+        .custom-nav {
+            background-color: var(--primary-color);
+            padding: 15px 0;
+            transition: all var(--transition-speed) ease;
+        }
+
+        .navbar.scrolled {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 10px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 55px;
+            transition: transform 0.5s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .logo p {
+            margin-left: 10px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .nav-bt {
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 0;
+            background: #D9D9D9;
+            transition: all var(--transition-speed) ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .nav-bt:hover {
+            background: #ff9999;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-line {
+            height: 2px;
+            background-color: rgba(0, 0, 0, 0.2);
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            min-height: 100vh;
+            position: relative;
+            padding-top: 80px;
+        }
+
+        .arrows {
+            display: flex;
+            flex-direction: column;
+            width: 6vw;
+            justify-content: center;
+            align-items: center;
+            row-gap: 12vw;
+        }
+
+        .arrow {
+            width: 40px;
+            transition: transform 0.3s ease;
+        }
+
+        .arrow:hover {
+            transform: scale(1.2);
+        }
+
+        .content {
+            position: relative;
+            width: 100%;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .hero-text {
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-in;
+        }
+
+        #hero-title {
+            font-size: 3rem;
+            font-family: "Kaushan Script", cursive;
+            font-weight: bold;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #e60000;
+        }
+
+        #hero-desc {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .image-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            overflow: hidden;
+        }
+
+        .animated-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: auto;
+            opacity: 0;
+            transform: scale(0.9) translateY(20px);
+            transition:
+                opacity 1.5s ease-in-out,
+                transform 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+        }
+
+        .animated-img.active {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        /* Description Sections */
+        .whole-desc {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 80px 0;
+        }
+
+        .desc-cont {
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: rgba(234, 195, 195, 0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .desc-cont:hover {
+            transform: translateY(-10px);
+        }
+
+        #normal-desc {
+            font-size: 1.2rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+            line-height: 1.8;
+        }
+
+        #normal-title {
+            font-size: 2rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            color: #e60000;
+        }
+
+        .desc-arrows {
+            display: flex;
+            flex-direction: column;
+            width: 6vw;
+            justify-content: center;
+            align-items: center;
+            row-gap: 12vw;
+        }
+
+        .desc2 {
+            border-radius: 40px;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            padding: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            background: rgba(234, 195, 195, 0.7);
+            transition: transform 0.3s ease;
+        }
+
+        .desc2:hover {
+            transform: translateY(-10px);
+        }
+
+        .desc-list {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 50%;
+        }
+
+        .shop-ul {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .shop-ul span {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .buy-btn {
+            display: block;
+            width: fit-content;
+            margin: 30px auto 0;
+            background: var(--btn-gradient);
+            color: white;
+            padding: 14px 28px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+        }
+
+        .buy-btn:hover {
+            transform: scale(1.05) translateY(-3px);
+            background: var(--btn-hover);
+            box-shadow: 0 8px 20px rgba(255, 77, 77, 0.4);
+        }
+
+        .buy-btn.added {
+            background: linear-gradient(to right, #4CAF50, #8BC34A);
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Product Images */
+        .hover-image {
+            position: relative;
+            width: 50%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hover-image img {
+            max-width: 100%;
+            height: auto;
+            transition: all 0.5s ease;
+        }
+
+        .hover-img {
+            position: absolute;
+            opacity: 0;
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .hover-image:hover .hover-img {
+            opacity: 1;
+            transform: scale(1) rotate(0);
+        }
+
+        .hover-image:hover .default-img {
+            opacity: 0;
+            transform: scale(0.9) rotate(-5deg);
+        }
+
+        .cor-img {
+            max-width: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .cor-img:hover {
+            transform: scale(1.05);
+        }
+
+        #shop-img {
+            max-width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        #shop-img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Size options */
+        .sizes {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .size-option {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .size-option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 1s ease-in;
+        }
+
+        .slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            #hero-title {
+                font-size: 2.5rem;
+            }
+            #hero-desc {
+                font-size: 1.3rem;
+            }
+            .image-wrapper {
+                height: 350px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .desc2 {
+                flex-direction: column;
+            }
+            .desc-list, .hover-image {
+                width: 100%;
+                margin-bottom: 30px;
+            }
+            #normal-title[style="font-size: 42px;"] {
+                font-size: 32px !important;
+            }
+            .image-wrapper {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .arrows, .desc-arrows {
+                display: none;
+            }
+            .hero {
+                padding-top: 60px;
+            }
+            .hero-text {
+                width: 90%;
+            }
+            #hero-title {
+                font-size: 2rem;
+            }
+            #hero-desc {
+                font-size: 1.1rem;
+            }
+            .desc-cont, .desc2 {
+                padding: 30px 20px;
+                width: 90%;
+                margin: 0 auto;
+            }
+            #normal-desc {
+                font-size: 1rem;
+            }
+            .image-wrapper {
+                height: 250px;
+            }
+            .sizes {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+            .whole-desc {
+                padding: 50px 0;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .logo img {
+                height: 40px;
+            }
+            .logo p {
+                font-size: 0.8rem;
+            }
+            .nav-bt {
+                padding: 6px 15px;
+                font-size: 0.8rem;
+            }
+            #hero-title {
+                font-size: 1.8rem;
+                margin-bottom: 15px;
+            }
+            #hero-desc {
+                font-size: 1rem;
+            }
+            #normal-title {
+                font-size: 1.5rem;
+            }
+            #normal-title[style="font-size: 42px;"] {
+                font-size: 24px !important;
+            }
+            .buy-btn {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+            .image-wrapper {
+                height: 200px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg custom-nav">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg custom-nav fixed-top">
+        <div class="container">
             <a class="navbar-brand" href="#home">
                 <div class="logo d-flex align-items-center">
                     <img src="assets/logo.png" alt="logo" class="me-2" />
@@ -27,13 +505,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center">
-                    <li class="nav-item mx-4">
+                    <li class="nav-item mx-2">
                         <a class="nav-link" href="#about"><button class="nav-bt">ABOUT</button></a>
                     </li>
-                    <li class="nav-item mx-4">
+                    <li class="nav-item mx-2">
                         <a class="nav-link" href="#product"><button class="nav-bt">PRODUCT</button></a>
                     </li>
-                    <li class="nav-item mx-4">
+                    <li class="nav-item mx-2">
                         <a class="nav-link" href="#shop"><button class="nav-bt">SHOP</button></a>
                     </li>
                 </ul>
@@ -41,20 +519,22 @@
         </div>
     </nav>
 
-    <div class="nav-line"></div>
-
     <div id="home" class="hero">
         <div class="arrows">
             <img class="arrow" src="assets/up_arrow_noneback.png" alt="up">
             <a href="#about"><img class="arrow" src="assets/down_arrow_noneback.png" alt="down"></a>
         </div>
-        <div class="content">
+        <div class="container content">
             <div class="hero-text">
-                <h2 id="hero-title">"A Legacy of Sweet Memories"</h2>
-                <p id="hero-desc">Where tradition meets modern refreshment. The iconic elixir cherished across
-                    generations.</p>
+                <h2 id="hero-title" class="animate__animated animate__fadeIn">
+                    "A Legacy of Sweet Memories"
+                </h2>
+                <p id="hero-desc" class="animate__animated animate__fadeIn animate__delay-1s">
+                    Where tradition meets modern refreshment. The iconic elixir cherished across
+                    generations.
+                </p>
             </div>
-            <div class="image-wrapper">
+            <div class="image-wrapper animate__animated animate__fadeInUp animate__delay-1s">
                 <img src="assets/wave_ani1.png" class="animated-img active" id="img1" />
                 <img src="assets/wave_ani2.png" class="animated-img" id="img2" />
                 <img src="assets/wave_ani3.png" class="animated-img active" id="img3" />
@@ -68,16 +548,20 @@
             <a href="#home"><img class="arrow" src="assets/up_arrow.png" alt="up"></a>
             <a href="#product"><img class="arrow" src="assets/down_arrow.png" alt="down"></a>
         </div>
-        <div class="desc-cont">
-            <p id="normal-title">Heritage Meets Refreshment</p>
-            <p id="normal-desc">
-                Imagine a summer afternoon, a gentle breeze, the clink of ice in a glass, and the unmistakable fragrance
-                of Rooh Afza filling the air. Crafted with nature's botanical treasures, this ruby-red syrup has stood
-                the test of time bridging old and new, heritage and innovation, flavor and feeling. It's not just a
-                drink, it's a memory you can taste.
-                Rooh Afza is an iconic South Asian beverage concentrate and syrup with a rich heritage dating back to
-                1906. Created by Hakim Hafiz Abdul Majeed in Old Delhi, India, it has become a cultural icon across
-                India, Pakistan, Bangladesh, and the Middle East.</p>
+        <div class="container">
+            <div class="desc-cont">
+                <p id="normal-title" class="slide-up">Heritage Meets Refreshment</p>
+                <p id="normal-desc" class="fade-in">
+                    Imagine a summer afternoon, a gentle breeze, the clink of ice in a glass, and the unmistakable fragrance
+                    of Rooh Afza filling the air. Crafted with nature's botanical treasures, this ruby-red syrup has stood
+                    the test of time bridging old and new, heritage and innovation, flavor and feeling. It's not just a
+                    drink, it's a memory you can taste.
+                    <br><br>
+                    Rooh Afza is an iconic South Asian beverage concentrate and syrup with a rich heritage dating back to
+                    1906. Created by Hakim Hafiz Abdul Majeed in Old Delhi, India, it has become a cultural icon across
+                    India, Pakistan, Bangladesh, and the Middle East.
+                </p>
+            </div>
         </div>
     </div>
 
@@ -86,20 +570,22 @@
             <a href="#about"><img class="arrow" src="assets/up_arrow.png" alt="up"></a>
             <a href="#milk"><img class="arrow" src="assets/down_arrow.png" alt="down"></a>
         </div>
-        <div class="desc2">
-            <div class="desc-list">
-                <p id="normal-title" style="font-size: 42px;">CLASSIC ROOH AFZA SHARBAT</p>
-                <p id="normal-desc">Preparation</p>
-                <ol id="normal-desc">
-                    <li>Pour Rooh Afza syrup into a glass</li>
-                    <li>Add cold water and stir well</li>
-                    <li>Add ice cubes</li>
-                    <li>Garnish with mint leaves and lemon slice</li>
-                    <li>Serve immediately</li>
-                </ol>
-            </div>
-            <div class="hover-image">
-                <img class="cor-img" style="width: 40vw;" src="assets/cupandbot.png" alt="cup">
+        <div class="container">
+            <div class="desc2">
+                <div class="desc-list">
+                    <p id="normal-title" style="font-size: 42px;" class="slide-up">CLASSIC ROOH AFZA SHARBAT</p>
+                    <p id="normal-desc" class="fade-in">Preparation</p>
+                    <ol id="normal-desc" class="fade-in">
+                        <li>Pour Rooh Afza syrup into a glass</li>
+                        <li>Add cold water and stir well</li>
+                        <li>Add ice cubes</li>
+                        <li>Garnish with mint leaves and lemon slice</li>
+                        <li>Serve immediately</li>
+                    </ol>
+                </div>
+                <div class="hover-image">
+                    <img class="cor-img" src="assets/cupandbot.png" alt="cup">
+                </div>
             </div>
         </div>
     </div>
@@ -109,21 +595,23 @@
             <a href="#product"><img class="arrow" src="assets/up_arrow.png" alt="up"></a>
             <a href="#shop"><img class="arrow" src="assets/down_arrow.png" alt="down"></a>
         </div>
-        <div class="desc2">
-            <div class="desc-list">
-                <p id="normal-title" style="font-size: 42px;">ROOH AFZA MILK</p>
-                <p id="normal-desc">Preparation</p>
-                <ol id="normal-desc">
-                    <li>Mix Rooh Afza syrup with cold milk</li>
-                    <li>Stir until completely blended</li>
-                    <li>Add ice cubes</li>
-                    <li>Sprinkle chopped nuts on top</li>
-                    <li>Serve chilled</li>
-                </ol>
-            </div>
-            <div class="hover-image">
-                <img src="assets/MilkShake.png" class="default-img" />
-                <img src="assets/MilkShake2.png" class="hover-img" />
+        <div class="container">
+            <div class="desc2">
+                <div class="desc-list">
+                    <p id="normal-title" style="font-size: 42px;" class="slide-up">ROOH AFZA MILK</p>
+                    <p id="normal-desc" class="fade-in">Preparation</p>
+                    <ol id="normal-desc" class="fade-in">
+                        <li>Mix Rooh Afza syrup with cold milk</li>
+                        <li>Stir until completely blended</li>
+                        <li>Add ice cubes</li>
+                        <li>Sprinkle chopped nuts on top</li>
+                        <li>Serve chilled</li>
+                    </ol>
+                </div>
+                <div class="hover-image">
+                    <img src="assets/MilkShake.png" class="default-img" />
+                    <img src="assets/MilkShake2.png" class="hover-img" />
+                </div>
             </div>
         </div>
     </div>
@@ -133,33 +621,39 @@
             <a href="#milk"><img class="arrow" src="assets/up_arrow.png" alt="up"></a>
             <img class="arrow" src="assets/down_arrow.png" alt="down">
         </div>
-        <div class="desc2">
-            <div class="desc-list">
-                <p id="normal-title" style="font-size: 42px;">ROOH AFZA</p>
-                <div class="sizes">
-                    <div class="size-option">Size: 750ml<br>₹160</div>
-                    <div class="size-option">Size: 1.5 L<br>₹300</div>
+        <div class="container">
+            <div class="desc2">
+                <div class="desc-list">
+                    <p id="normal-title" style="font-size: 42px;" class="slide-up">ROOH AFZA</p>
+                    <div class="sizes fade-in">
+                        <div class="size-option">Size: 750ml<br>₹160</div>
+                        <div class="size-option">Size: 1.5 L<br>₹300</div>
+                    </div>
+                    <div class="shop-ul normal-desc fade-in">
+                        <span><i class="fas fa-leaf text-success"></i> <strong>Ingredients : </strong> Rose, Vetiver, Kewra, Mint, Coriander, Fruits</span>
+                        <span><i class="fas fa-glass-cheers text-primary"></i> <strong>Usage : </strong> Mix with water, milk, soda, or desserts</span>
+                        <span><i class="fas fa-sun text-warning"></i> <strong>Benefits : </strong> Natural coolant, refreshing taste, perfect for summers</span>
+                        <span><i class="fas fa-box text-secondary"></i> <strong>Manufacturer :</strong> Hamdard Laboratories (India)</span>
+                        <span><i class="fas fa-star text-warning"></i> <strong>Rating :</strong> 4.2★ (Based on 3,800+ reviews)</span>
+                    </div>
+                    <button class="buy-btn" id="buyBtn">BUY NOW</button>
                 </div>
-                <div class="shop-ul normal-desc">
-                    <span>🌿 <strong>Ingredients : </strong> Rose, Vetiver, Kewra, Mint, Coriander, Fruits</span>
-                    <span>🥂 <strong>Usage : </strong> Mix with water, milk, soda, or desserts</span>
-                    <span>🌞 <strong>Benefits : </strong> Natural coolant, refreshing taste, perfect for
-                        summers</span>
-                    <span>📦 <strong>Manufacturer :</strong> Hamdard Laboratories (India)</span>
-                    <span>⭐ <strong>Rating :</strong> 4.2★ (Based on 3,800+ reviews)</span>
+                <div class="hover-image">
+                    <img id="shop-img" src="assets/shop.png" alt="shop">
                 </div>
-                <button class="buy-btn" id="buyBtn">BUY NOW</button>
             </div>
-                <img id="shop-img" style="width: 50vw;" src="assets/shop.png" alt="shop">
         </div>
     </div>
 
-
     <script>
+        // Image animation
         const img1 = document.getElementById("img1");
         const img2 = document.getElementById("img2");
+        const img3 = document.getElementById("img3");
+        const img4 = document.getElementById("img4");
 
         let showFirst = true;
+        let showFirstnext = true;
 
         setInterval(() => {
             if (showFirst) {
@@ -170,12 +664,7 @@
                 img1.classList.add("active");
             }
             showFirst = !showFirst;
-        }, 3000); // 3 seconds interval (you can adjust this)
-
-        const img3 = document.getElementById("img3");
-        const img4 = document.getElementById("img4");
-
-        let showFirstnext = true;
+        }, 3000);
 
         setInterval(() => {
             if (showFirstnext) {
@@ -186,17 +675,40 @@
                 img3.classList.add("active");
             }
             showFirstnext = !showFirstnext;
-        }, 3000); // 3 seconds interval (you can adjust this)
-    </script>
+        }, 3000);
 
-    <script>
+        // Buy button
         const buyBtn = document.getElementById('buyBtn');
-
         buyBtn.addEventListener('click', () => {
             if (!buyBtn.classList.contains('added')) {
-                buyBtn.textContent = 'ADDED';
+                buyBtn.textContent = 'ADDED TO CART';
                 buyBtn.classList.add('added');
             }
+        });
+
+        // Navbar scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.fade-in, .slide-up').forEach(el => {
+                observer.observe(el);
+            });
         });
     </script>
 
