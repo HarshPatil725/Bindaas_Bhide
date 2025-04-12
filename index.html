@@ -11,6 +11,7 @@
 </head>
 
 <body>
+
     <nav class="navbar navbar-expand-lg custom-nav">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
@@ -50,15 +51,134 @@
         <div class="content">
             <div class="hero-text">
                 <h2 id="hero-title">"A Legacy of Sweet Memories"</h2>
-                <p id="hero-desc">Where tradition meets modern refreshment. The iconic elixir cherished across generations.</p>
+                <p id="hero-desc">Where tradition meets modern refreshment. The iconic elixir cherished across
+                    generations.</p>
             </div>
-            
+            <div class="image-wrapper">
+                <img src="assets/wave_ani1.png" class="animated-img active" id="img1" />
+                <img src="assets/wave_ani2.png" class="animated-img" id="img2" />
+            </div>
+        </div>
+    </div>
+
+    <div class="whole-desc">
+        <div class="desc-arrows">
+            <img class="arrow" src="assets/up_arrow.png" alt="up">
+            <img class="arrow" src="assets/down_arrow.png" alt="down">
+        </div>
+        <div class="desc-cont">
+            <p id="normal-title">Heritage Meets Refreshment</p>
+            <p id="normal-desc">
+                Imagine a summer afternoon, a gentle breeze, the clink of ice in a glass, and the unmistakable fragrance
+                of Rooh Afza filling the air. Crafted with nature's botanical treasures, this ruby-red syrup has stood
+                the test of time bridging old and new, heritage and innovation, flavor and feeling. It's not just a
+                drink, it's a memory you can taste.
+                Rooh Afza is an iconic South Asian beverage concentrate and syrup with a rich heritage dating back to
+                1906. Created by Hakim Hafiz Abdul Majeed in Old Delhi, India, it has become a cultural icon across
+                India, Pakistan, Bangladesh, and the Middle East.</p>
+        </div>
+    </div>
+
+    <div class="whole-desc">
+        <div class="desc-arrows">
+            <img class="arrow" src="assets/up_arrow.png" alt="up">
+            <img class="arrow" src="assets/down_arrow.png" alt="down">
+        </div>
+        <div class="desc2">
+            <div class="desc-list">
+                <p id="normal-title" style="font-size: 42px;">CLASSIC ROOH AFZA SHARBAT</p>
+                <p id="normal-desc">Prepation</p>
+                <ol id="normal-desc">
+                    <li>Pour Rooh Afza syrup into a glass</li>
+                    <li>Add cold water and stir well</li>
+                    <li>Add ice cubes</li>
+                    <li>Garnish with mint leaves and lemon slice</li>
+                    <li>Serve immediately</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <div class="whole-desc">
+        <div class="desc-arrows">
+            <img class="arrow" src="assets/up_arrow.png" alt="up">
+            <img class="arrow" src="assets/down_arrow.png" alt="down">
+        </div>
+        <div class="desc2">
+            <div class="desc-list">
+                <p id="normal-title" style="font-size: 42px;">ROOH AFZA MILK</p>
+                <p id="normal-desc">Prepation</p>
+                <ol id="normal-desc">
+                    <li>Mix Rooh Afza syrup with cold milk</li>
+                    <li>Stir until completely blended</li>
+                    <li>Add ice cubes</li>
+                    <li>Sprinkle chopped nuts on top</li>
+                    <li>Serve chilled</li>
+                </ol>
+            </div>
+            <div class="content-need">
+                <div class="container" id="drinkContainer">
+                    <div class="image-container">
+                        <div class="image image-1"></div>
+                        <div class="image image-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="whole-desc">
+        <div class="desc-arrows">
+            <img class="arrow" src="assets/up_arrow.png" alt="up">
+            <img class="arrow" src="assets/down_arrow.png" alt="down">
+        </div>
+        <div class="desc2">
+            <div class="desc-list">
+                <p id="normal-title" style="font-size: 42px;">ROOH AFZA</p>
+                <div class="sizes">
+                    <div class="size-option">Size: 750ml<br>₹160</div>
+                    <div class="size-option">Size: 1.5 L<br>₹300</div>
+                </div>
+                <div class="normal-desc">
+                    <span>🌿 <strong>Ingredients : </strong> Rose, Vetiver, Kewra, Mint, Coriander, Fruits</span><br>
+                    <span>🥂 <strong>Usage : </strong> Mix with water, milk, soda, or desserts</span><br>
+                    <span>🌞 <strong>Benefits : </strong> Natural coolant, refreshing taste, perfect for
+                        summers</span><br>
+                    <span>📦 <strong>Manufacturer :</strong> Hamdard Laboratories (India)</span><br>
+                    <span>⭐ <strong>Rating :</strong> 4.2★ (Based on 3,800+ reviews)</span>
+                </div>
+            </div>
+            <div class="content-need">
+                <div class="container" id="drinkContainer">
+                    <div class="image-container">
+                        <div class="image image-1"></div>
+                        <div class="image image-2"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
 
+    <script>
+        const img1 = document.getElementById("img1");
+        const img2 = document.getElementById("img2");
 
+        let showFirst = true;
 
+        setInterval(() => {
+            if (showFirst) {
+                img1.classList.remove("active");
+                img2.classList.add("active");
+            } else {
+                img2.classList.remove("active");
+                img1.classList.add("active");
+            }
+            showFirst = !showFirst;
+        }, 3000); // 3 seconds interval (you can adjust this)
+    </script>
+
+    <script src="animation.js" defer></script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"

@@ -49,6 +49,8 @@ body {
     display: flex;
     height: calc(100vh - 81px);
     margin-top: 7vh;
+    position: relative;
+    /* Makes it the reference for absolute children */
 }
 
 .arrows {
@@ -65,28 +67,30 @@ body {
 }
 
 .content {
-    height: 70vh;
+    position: relative;
     width: 84vw;
-    padding-top: 20vh;
+    z-index: 1;
+    padding-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 
 .hero-text {
     width: 40vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; /* center horizontally */
     text-align: center;
-    margin-top: 10vh;
-    margin: auto;        /* center inside .content */
+    margin-bottom: 2vh;
+    /* Just enough spacing */
+    position: relative;
+    z-index: 2;
 }
-
 
 #hero-title {
     font-size: 36px;
     font-family: "Kaushan Script", cursive;
     font-weight: bold;
-    font-style:normal;
+    font-style: normal;
     margin-bottom: 30px;
     line-height: 1.6;
 }
@@ -97,3 +101,157 @@ body {
     letter-spacing: 1px;
 }
 
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.animated-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 400px; /* Add this for debug */
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+    transition:
+        opacity 1.5s ease-in-out,
+        transform 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.animated-img.active {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+}
+
+.whole-desc {
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-bottom: 15vh;
+}
+
+.desc-cont {
+    border: 0px;
+    border-radius: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 84vw;
+    padding: 50px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background: #EAC3C369;
+}
+
+#normal-desc {
+    font-size: 24px;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+#normal-title {
+    font-size: 28px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1.6;
+}
+
+.desc-arrows {
+    display: flex;
+    flex-direction: column;
+    width: 6vw;
+    justify-content: center;
+    align-items: center;
+    row-gap: 12vw;
+}
+
+.desc2 {
+    border: 0px;
+    border-radius: 120px;
+    display: flex;
+    flex-direction: column;
+    width: 84vw;
+    padding: 50px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    background: #EAC3C369;
+}
+
+.desc-list {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all 0.8s ease-in-out;
+}
+
+.image-1 {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.image-2 {
+    opacity: 0;
+    transform: scale(1.1) rotate(5deg);
+}
+
+.image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    padding-top: 70%;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.container:hover .image-1 {
+    opacity: 0;
+    transform: scale(0.9) rotate(-5deg);
+}
+
+.container:hover .image-2 {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+}
+
+.content-need {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    max-width: 300px;
+    width: 100%;
+}
+
+.sizes {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.size-option {
+    background-color: #eaeaea;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 1rem;
+}
